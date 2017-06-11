@@ -1,7 +1,8 @@
 const HtmlWebpackPlugin=require('html-webpack-plugin');
 const webpack=require("webpack");
 const path=require('path');
-
+//浏览器
+const OpenBrowserPlugin=require("open-browser-webpack-plugin");
 //css样式分离
 const ExtractTextPlugin=require('extract-text-webpack-plugin');
 const extractCSS = new ExtractTextPlugin('styles/[name].css');
@@ -79,6 +80,7 @@ module.exports={
 			inject: true,
 			title: 'My App',
       		template: '../index.ejs'
-		})
+		}),
+		new OpenBrowserPlugin({url:"http://localhost:8080"})
 	],
 }

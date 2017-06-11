@@ -11,19 +11,14 @@ import {FlatButton,Avatar,Paper } from 'material-ui';
 const List=()=>{
 	return(
 		<div>
-<Paper  zDepth={1} >
-				
+			<div>
+				<h2 style={styles.title}>已预约报到病人：0 </h2>
+				<small style={styles.title}>状态说明:应诊_指患者当前正在看病；候诊_指患者当前正在排队看病；过诊_指患者报到时间超过就诊时间或者医生叫诊时患者未及时应诊</small>
+			</div>
+<Paper  zDepth={1} style={{marginTop:20	}}>
 		<Table selectable={false}>
 
 		  <TableHeader  >
-		  <TableRow>
-              <TableHeaderColumn colSpan="9" 
-              tooltip="状态说明:应诊_指患者当前正在看病；候诊_指患者当前正在排队看病；过诊_指患者报到时间超过就诊时间或者医生叫诊时患者未及时应诊"
-              style={{textAlign: 'center'}}>
-                已预约报到病人：0 
-              </TableHeaderColumn>
-
-            </TableRow>
 		    <TableRow>
 		      <TableHeaderColumn>状态</TableHeaderColumn>
 		      <TableHeaderColumn>号码</TableHeaderColumn>
@@ -99,17 +94,12 @@ const List=()=>{
 
 </Paper>
 
-
-<Paper  zDepth={1} style={{marginTop:40	}} >
+		<div>
+				<h2 style={styles.title}>已预约未报到病人：0 </h2>
+		</div>
+<Paper  zDepth={1} style={{marginTop:20	}} >
 		<Table selectable={false}>
-
 		  <TableHeader  >
-		  <TableRow>
-              <TableHeaderColumn colSpan="7"  style={{textAlign: 'center'}}>
-                已预约未报到病人：1
-              </TableHeaderColumn>
-
-            </TableRow>
 		    <TableRow>
 		      <TableHeaderColumn>号码</TableHeaderColumn>
 		      <TableHeaderColumn>头像</TableHeaderColumn>
@@ -137,5 +127,12 @@ const List=()=>{
 
 		</div>
 	)
+}
+const styles={
+	title:{
+		fontWeight: "lighter",
+		marginBottom: 5,
+		marginTop:40
+	}
 }
 export default List

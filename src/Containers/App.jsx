@@ -4,18 +4,19 @@ import Frames from './Frames';
 import {Route,Redirect,Link} from 'react-router-dom';
 import Bundle from './Bundle';
 
-import {teal600,teal700,teal800} from 'material-ui/styles/colors';
+import {indigo500,pink400,orange1000} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 const muiTheme=getMuiTheme({
 	palette:{
-		primary1Color:teal600,
-		primary2Color:teal700,
-		primary3Color:teal800,
+		primary1Color:indigo500,
+		primary2Color:pink400,
+		primary3Color:orange1000,
 	},
 	appBarTitle:{//导航标题
     	fontSize:18,
-    	marginLeft:256+72,
+    	marginLeft:20,
+    	backgroundColor:"none"
   	},
 })
 const App=()=>(
