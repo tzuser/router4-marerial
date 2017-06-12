@@ -1,14 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './Containers/App';
-import {HashRouter as Router,Route,Link} from 'react-router-dom';
+//redux
+import { Provider } from 'react-redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension';
+import reducers from './reducers/reducers.js';
+import thunk from 'redux-thunk';
 
+import {HashRouter as Router,Route,Link} from 'react-router-dom';
 import injectTapEventPlugin from "react-tap-event-plugin";
 injectTapEventPlugin();
+//中间件
+const middleware = [thunk];
+
+const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(...middleware))
+)
 
 //import 'babel-polyfill';
 ReactDOM.render(
-	<Router>
-		<App />
-	</Router>
+	<Provider store={store}>
+		<Router>
+			<App />
+		</Router>
+	</Provider>
 	,document.getElementById('root'))

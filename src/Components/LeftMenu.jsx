@@ -6,8 +6,8 @@ import {NavLink} from 'react-router-dom';
 import pathToIndex from '../tools/pathToIndex';
 let SelectableList = makeSelectable(List);
 
-const LeftMenu=({match,history,location},{muiTheme})=>{
-	
+const LeftMenu=({match,history,location,topHeight,open},{muiTheme})=>{
+	styles.leftMenu.top=topHeight+10;
 	//导航数据
 	const menuData=[
 	{name:"门诊",url:`${match.url}/clinic`,icon:<AttrIcon icon="i-yiwaimenzhen" />},
@@ -20,7 +20,7 @@ const LeftMenu=({match,history,location},{muiTheme})=>{
 	const menuIndex=pathToIndex({data:menuData,location,match})
 
 	return (
-			<Drawer open={true} zDepth={1}  >
+			<Drawer open={open} zDepth={1}  >
 				<SelectableList value={menuIndex} style={styles.leftMenu} >
 		 		{menuData.map((item,key)=>(
 		 			<ListItem key={key} 
@@ -40,9 +40,10 @@ LeftMenu.contextTypes={
 const styles={
 	leftMenu:{
 		position:"absolute",
-		top:112+10,
+		top:112,
 		width:'100%',
-		selectColor:"#ff6623"
+		selectColor:"#ff6623",
+		transition: "top 0.3s"
 	},
 }
 

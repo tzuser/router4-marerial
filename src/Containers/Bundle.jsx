@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 class Bundle extends Component{
 	state={mod:null}
 	componentWillMount() {
+		console.log(this.state.mod)
 		this.props.load((mod)=>{
 			this.setState({mod:mod})
 		})

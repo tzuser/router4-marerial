@@ -5,18 +5,17 @@ import AttrIcon from '../Components/AttrIcon';
 import {AppBar,Paper,IconButton,Tabs,Tab} from 'material-ui';
 
 
-const Header=({match,history,location,title,tabData},{muiTheme})=>{
-
-	styles.top.backgroundColor=muiTheme.palette.primary1Color;
+const Header=({match,history,location,title,tabData,height,onLeftIconButtonTouchTap},{muiTheme})=>{
 	if(tabData && tabData.length>0){
-		styles.tabsBox.maxWidth=tabData.length*150;//副导航宽度
+		styles.newTabsBox=Object.assign({},styles.tabsBox,{maxWidth:tabData.length*150}) ;//副导航宽度
 	}
-	
-
+	styles.top.backgroundColor=muiTheme.palette.primary1Color;
+	styles.top.height=height;
 	return (
 			<Paper  zDepth={2} style={styles.top}>
 				<AppBar 
 		 			titleStyle={muiTheme.appBarTitle} 
+		 			onLeftIconButtonTouchTap={onLeftIconButtonTouchTap}
 		 			style={styles.nav} 
 		 			title={
 		 				<div style={styles.logo}>
@@ -26,7 +25,7 @@ const Header=({match,history,location,title,tabData},{muiTheme})=>{
 		 			}
 		 			iconElementRight={<IconButton tooltip="退出系统"><AttrIcon icon="i-tuichu" /></IconButton>} 
 		 			zDepth={0} />
-				<div style={styles.tabsBox}>
+				<div style={styles.newTabsBox}>
 					{tabData && 
 						(<Tabs value={0} tabItemContainerStyle={styles.tabs}>
 							{tabData.map((item,key)=>(
@@ -50,6 +49,7 @@ const styles={
 		left:0,
 		right:0,
 		zIndex:1301,
+		overflow: 'hidden'
 	},
 	logo:{
 		display:'flex',
