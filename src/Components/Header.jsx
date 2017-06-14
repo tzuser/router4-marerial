@@ -6,6 +6,7 @@ import {AppBar,Paper,IconButton,Tabs,Tab} from 'material-ui';
 
 
 const Header=({match,history,location,title,tabData,height,onLeftIconButtonTouchTap},{muiTheme})=>{
+
 	if(tabData && tabData.length>0){
 		styles.newTabsBox=Object.assign({},styles.tabsBox,{maxWidth:tabData.length*150}) ;//副导航宽度
 	}
@@ -27,9 +28,9 @@ const Header=({match,history,location,title,tabData,height,onLeftIconButtonTouch
 		 			zDepth={0} />
 				<div style={styles.newTabsBox}>
 					{tabData && 
-						(<Tabs value={0} tabItemContainerStyle={styles.tabs}>
+						(<Tabs value={location.pathname} onChange={(key)=>{history.replace(key)}} tabItemContainerStyle={styles.tabs}>
 							{tabData.map((item,key)=>(
-								<Tab label={item.name} key={key} value={key} />
+								<Tab label={item.name} key={key} value={item.url} />
 							))}
 						</Tabs>)
 					}

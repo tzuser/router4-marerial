@@ -1,26 +1,25 @@
 import React,{Component} from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import DatePicker from 'material-ui/DatePicker';
-import TimePicker from 'material-ui/TimePicker';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as configAct from '../actions/config.js';
 class User extends Component {
-	componentWillMount() {
+	componentDidMount() {
 		//注册tab数据
 		this.props.setTopTabsAct(
-			[{name:"未诊病人"},
-			{name:"测试"}])
+			[{name:"病历",url:'/'},
+			{name:"中药饮片",url:'/'},
+			{name:"中西成药",url:'/'},
+			{name:"检验检查",url:'/'},
+			{name:"治疗理疗",url:'/'},
+			{name:"其他汇总",url:'/'}])		
 	}
 	componentWillUnmount() {
 		//清空tab
 		this.props.setTopTabsAct(null)
 	}
 	render() {
-		return (<div><RaisedButton label="aaaa" /> This is User    
-	<DatePicker hintText="Landscape Inline Dialog" container="inline" mode="landscape" />   
-	<TimePicker hintText="12hr Format" /></div>)
+		return (<div>统计</div>)
 	}
 }
 const mapStateToProps=({config})=>{

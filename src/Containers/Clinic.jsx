@@ -10,13 +10,19 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as configAct from '../actions/config.js';
+import {Route,Redirect} from 'react-router-dom'
+
+import UnknowPatient from './UnknowPatient';
+import SimpleClinic from './SimpleClinic';
+import AdmittedPatient from './AdmittedPatient';
 class Clinic extends Component{
-	componentWillMount() {
+	componentDidMount() {
 		//注册tab数据
+		let {match}=this.props;
 		this.props.setTopTabsAct(
-			[{name:"未诊病人"},
-			{name:"已诊病人"},
-			{name:"简易门诊"}])
+			[{name:"未诊病人",url:`${match.url}/unknow`},
+			{name:"已诊病人",url:`${match.url}/admitted`},
+			{name:"简易门诊",url:`${match.url}/simple`}])
 	}
 	componentWillUnmount() {
 		//清空tab
@@ -29,12 +35,14 @@ class Clinic extends Component{
 					<div style={styles.tool}>
 						<div></div>
 						<div>
-							<FlatButton label="医生屏显链接"  />
 							<DatePickerBtn />
 						</div>
 					</div>
 					<Divider />
-					<List />
+					<Route exact path={`${match.url}`} render={() => (<Redirect to={`${match.url}/unknow`} />)}/>
+					<Route path={`${match.url}/unknow`} component={UnknowPatient} />
+					<Route path={`${match.url}/admitted`} component={AdmittedPatient} />
+					<Route path={`${match.url}/simple`} component={SimpleClinic} />
 				</div>
 			)
 	}
