@@ -27,9 +27,9 @@ const Header=({match,history,location,title,tabData,height,onLeftIconButtonTouch
 		 			zDepth={0} />
 				<div style={styles.newTabsBox}>
 					{tabData && 
-						(<Tabs value={0} tabItemContainerStyle={styles.tabs}>
+						(<Tabs value={location.pathname} tabItemContainerStyle={styles.tabs} onChange={(key)=>{history.push(key)}} >
 							{tabData.map((item,key)=>(
-								<Tab label={item.name} key={key} value={key} />
+								<Tab label={item.name} key={key} value={item.url} />
 							))}
 						</Tabs>)
 					}

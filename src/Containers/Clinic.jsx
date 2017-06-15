@@ -11,13 +11,14 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as configAct from '../actions/config.js';
 class Clinic extends Component{
-	componentWillMount() {
+	componentDidMount(){
 		//注册tab数据
 		this.props.setTopTabsAct(
-			[{name:"未诊病人"},
-			{name:"已诊病人"},
-			{name:"简易门诊"}])
+			[{name:"未诊病人",url:'/app/clinic'},
+			{name:"已诊病人",url:'/'},
+			{name:"简易门诊",url:'/'}])
 	}
+
 	componentWillUnmount() {
 		//清空tab
 		this.props.setTopTabsAct(null)
