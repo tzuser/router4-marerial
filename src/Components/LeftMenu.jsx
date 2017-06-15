@@ -13,7 +13,7 @@ const LeftMenu=({match,history,location,topHeight,open},{muiTheme})=>{
 	{name:"门诊",url:`${match.url}/clinic`,icon:<AttrIcon icon="i-yiwaimenzhen" />},
 	{name:"档案",url:`${match.url}/home`,icon:<AttrIcon icon="i-archives" />},
 	{name:"统计",url:`${match.url}/user`,icon:<AttrIcon icon="i-tongji" />},
-	{name:"设置",url:`${match.url}/tz`,icon:<AttrIcon icon="i-iconziti09" /> }
+	{name:"设置",url:`${match.url}/setup`,icon:<AttrIcon icon="i-iconziti09" /> }
 	];
 
 	//根据URL获得当前索引
@@ -28,6 +28,7 @@ const LeftMenu=({match,history,location,topHeight,open},{muiTheme})=>{
 			 			onTouchTap={()=>{history.push(item.url)}}
 			 			leftIcon={item.icon} 
 			 			value={key}
+			 			style={muiTheme.listItem}
 		 			/>
 		 		))}
 				</SelectableList>

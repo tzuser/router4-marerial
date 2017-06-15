@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import Full from '../Components/Full';
 import Home from './Home';
 import User from './User';
+import Setup from './Setup';
 /*import Home from 'bundle-loader?lazy&name=[name]!./Home';
 import User from 'bundle-loader?lazy&name=[name]!./User';*/
 import Clinic from './Clinic';
@@ -48,6 +49,7 @@ class Frames extends Component{
 					<Route path={`${match.url}/clinic`} component={Clinic} />
 					<Route path={`${match.url}/home`} component={Home} />
 					<Route path={`${match.url}/user`} component={User} />
+					<Route path={`${match.url}/setup`} component={Setup} />
 				</Full>
 			</Full>
 		</Full>

@@ -8,7 +8,7 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import {FlatButton,Avatar,Paper } from 'material-ui';
-const List=()=>{
+const List=({history})=>{
 	return(
 		<div>
 			<div>
@@ -42,7 +42,7 @@ const List=()=>{
 		      <TableRowColumn>男</TableRowColumn>
 		      <TableRowColumn>初诊</TableRowColumn>
 		      <TableRowColumn>16:30-17:00</TableRowColumn>
-		      <TableRowColumn><FlatButton label="叫诊" 	primary={true} /></TableRowColumn>
+		      <TableRowColumn><FlatButton label="叫诊" onTouchTap={()=>history.push('/app/clinic/casec')} 	primary={true} /></TableRowColumn>
 		    </TableRow>
 		    <TableRow>
 		    	<TableRowColumn>候诊</TableRowColumn>

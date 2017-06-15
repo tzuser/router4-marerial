@@ -16,15 +16,36 @@ import UnknowPatient from './UnknowPatient';
 import SimpleClinic from './SimpleClinic';
 import AdmittedPatient from './AdmittedPatient';
 import Casec from './Casec';//看诊
-import Queue from './Queue';//排队
 
-class Clinic extends Component{
+class Queue extends Component{
+	componentDidMount() {
+		//注册tab数据
+		let {match}=this.props;
+		this.props.setTopTabsAct(
+			[{name:"未诊病人",url:`${match.url}/unknow`},
+			{name:"已诊病人",url:`${match.url}/admitted`},
+			{name:"简易门诊",url:`${match.url}/simple`}])
+	}
+
+	componentWillUnmount() {
+		//清空tab
+		this.props.setTopTabsAct(null)
+	}
 	render() {
 		let {location,match}=this.props;
 		return (
-				<div>
-					<Route exact path={`${match.url}`} render={() => (<Redirect to={`${match.url}/queue`} />)}/>
-					<Route path={`${match.url}/queue`} component={Queue} />
+				<div style={{padding:"20px 40px",}}>
+					<div style={styles.tool}>
+						<div></div>
+						<div>
+							<DatePickerBtn />
+						</div>
+					</div>
+					<Divider />
+					<Route exact path={`${match.url}`} render={() => (<Redirect to={`${match.url}/unknow`} />)}/>
+					<Route path={`${match.url}/unknow`} component={UnknowPatient} />
+					<Route path={`${match.url}/admitted`} component={AdmittedPatient} />
+					<Route path={`${match.url}/simple`} component={SimpleClinic} />
 					<Route path={`${match.url}/casec`} component={Casec} />
 				</div>
 			)
@@ -57,4 +78,4 @@ const mapDispatchToProps=(dispatch)=>{
     	setTopTabsAct:configAct.setTopTabs
     },dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Clinic)
+export default connect(mapStateToProps, mapDispatchToProps)(Queue)

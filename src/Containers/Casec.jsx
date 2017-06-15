@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as configAct from '../actions/config.js';
 import {green700} from 'material-ui/styles/colors';
-class User extends Component {
+class Casec extends Component {
 	componentDidMount() {
 		//注册tab数据
 		this.props.setTopTabsAct(
-			[{name:"病历",url:'/'},
+			[{name:"病历",url:'/app/clinic/casec'},
 			{name:"中药饮片",url:'/'},
 			{name:"中西成药",url:'/'},
 			{name:"检验检查",url:'/'},
@@ -23,7 +23,7 @@ class User extends Component {
 	}
 
 	render() {
-		return (<div>统计</div>)
+		return (<div>看诊中</div>)
 	}
 }
 
@@ -39,4 +39,4 @@ const mapDispatchToProps=(dispatch)=>{
     },dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default connect(mapStateToProps, mapDispatchToProps)(Casec);
