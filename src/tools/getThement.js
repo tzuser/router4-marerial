@@ -4,7 +4,6 @@ const getColor=({color})=>{
 	let newColor=color;
 	if(!color)newColor=indigo500;
 	return ({
-
 				primary1Color:newColor,
 				primary2Color:pink400,
 				primary3Color:orange1000,

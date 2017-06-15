@@ -18,8 +18,8 @@ class Casec extends Component {
 	}
 	componentWillUnmount() {
 		//清空tab
-		this.props.setTopTabsAct(null)
-		this.props.setColor(null)
+		//this.props.setTopTabsAct(null)
+		//this.props.setColor(null)
 	}
 
 	render() {

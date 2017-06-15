@@ -12,12 +12,13 @@ import Clinic from './Clinic';
 
 import Header from '../Components/Header';
 import LeftMenu from '../Components/LeftMenu';
-import {Route,Redirect,Link} from 'react-router-dom';
+import {Route,Redirect,Link,Switch } from 'react-router-dom';
 import Bundle from './Bundle';
 import PropTypes from 'prop-types'; 
 
 import {grey50} from 'material-ui/styles/colors';
-import * as configAct from '../actions/config'; 
+import * as configAct from '../actions/config';
+import { RouteTransition } from 'react-router-transition';
 class Frames extends Component{
 	constructor(props) {
 		super(props);
@@ -25,7 +26,7 @@ class Frames extends Component{
 
 	render() {
 		let muiTheme=this.context.muiTheme;
-		let match=this.props.match;
+		let {match,location}=this.props;
 		let topHeight=64;//头部高度
 		let tabData=this.props.tabData;//头部导航数据
 		let navOpen=this.props.navOpen;//左边导航是否打开
@@ -33,6 +34,7 @@ class Frames extends Component{
 		if(tabData && tabData.length>0){
 			topHeight=112;
 		}
+		console.log('更新Frames')
 		return(
 		<Full>
 		 	<Header 
@@ -45,11 +47,11 @@ class Frames extends Component{
 	 		<Full style={styles.frame}>
 	 			<Full >
 	 				<div style={{height:topHeight,transition: "height 0.4s"}}></div>
-					<Route exact path="/app" render={() => (<Redirect to={`${match.url}/clinic`} />)}/>
-					<Route path={`${match.url}/clinic`} component={Clinic} />
-					<Route path={`${match.url}/home`} component={Home} />
-					<Route path={`${match.url}/user`} component={User} />
-					<Route path={`${match.url}/setup`} component={Setup} />
+						<Route exact path="/app" render={() => (<Redirect to={`${match.url}/clinic`} />)}/>
+						<Route path={`${match.url}/clinic`} component={Clinic} />
+						<Route path={`${match.url}/home`} component={Home} />
+						<Route path={`${match.url}/user`} component={User} />
+						<Route path={`${match.url}/setup`} component={Setup} />
 				</Full>
 			</Full>
 		</Full>
@@ -80,7 +82,9 @@ const mapStateToProps=({config})=>{
 }
 const mapDispatchToProps=(dispatch)=>{
     return bindActionCreators({
-    	navOpenAct:configAct.openNav
+    	navOpenAct:configAct.openNav,
+    	setTopTabsAct:configAct.setTopTabs,
+    	setColor:configAct.setColor
     },dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Frames)

@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import Full from '../Components/Full.jsx';
 import Frames from './Frames';
 
-import {HashRouter as Router,Route,Link} from 'react-router-dom';
+import {HashRouter as Router,Route,Redirect,Link} from 'react-router-dom';
 import Bundle from './Bundle';
 
 

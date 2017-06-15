@@ -19,6 +19,7 @@ import Casec from './Casec';//看诊
 
 class Queue extends Component{
 	componentDidMount() {
+		console.log('b')
 		//注册tab数据
 		let {match}=this.props;
 		this.props.setTopTabsAct(
@@ -29,7 +30,7 @@ class Queue extends Component{
 
 	componentWillUnmount() {
 		//清空tab
-		this.props.setTopTabsAct(null)
+		//this.props.setTopTabsAct(null)
 	}
 	render() {
 		let {location,match}=this.props;
