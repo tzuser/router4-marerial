@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as configAct from '../actions/config.js';
 import {green700} from 'material-ui/styles/colors';
+import {Field,reduxForm,Form } from 'redux-form';
+
 class Casec extends Component {
 	componentDidMount() {
 		//注册tab数据
@@ -23,20 +25,31 @@ class Casec extends Component {
 	}
 
 	render() {
-		return (<div>看诊中</div>)
+
+		return (
+			<div>
+			<Form onSubmit={(e)=>{console.log(e)}}>
+				<Field name="email" component="input" type="email" />
+			</Form >
+			看诊中
+			</div>)
 	}
 }
 
-const mapStateToProps=({config})=>{
+const mapStateToProps=({casec})=>{
     return {
-    	
+    	initialValues:casec.form
     }
 }
 const mapDispatchToProps=(dispatch)=>{
     return bindActionCreators({
     	setTopTabsAct:configAct.setTopTabs,
-    	setColor:configAct.setColor
+    	setColor:configAct.setColor,
     },dispatch)
 }
+
+Casec=reduxForm({
+	form:'casec',
+})(Casec);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Casec);
